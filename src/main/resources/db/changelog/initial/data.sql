@@ -1,5 +1,5 @@
 INSERT INTO roles (role) VALUES ('USER');
-
+--пароль qwe
 INSERT INTO users_table (login, email, password, name, info, follower_count, following_count, enabled, role_id)
 VALUES
     ('johndoe', 'john@example.com', '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2', 'John Doe', 'Love photography', 0, 0, true, (select id from roles where role = 'USER')),
