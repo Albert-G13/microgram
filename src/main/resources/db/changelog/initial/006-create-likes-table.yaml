@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: 006
+      author: Albert G.
+      changes:
+        - createTable:
+            tableName: likes
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_like_to_user
+                    references: users_table(id)
+                    nullable: false
+              - column:
+                  name: publication_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_like_to_publication
+                    references: publications(id)
+                    nullable: false
+        - addUniqueConstraint:
+            columnNames: user_id, publication_id
+            constraintName: uk_like_user_pub
+            tableName: likes

@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: 005
+      author: Albert G.
+      changes:
+        - createTable:
+            tableName: follows
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: follower_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_follower_to_user
+                    references: users_table(id)
+                    nullable: false
+              - column:
+                  name: following_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_following_to_user
+                    references: users_table(id)
+                    nullable: false

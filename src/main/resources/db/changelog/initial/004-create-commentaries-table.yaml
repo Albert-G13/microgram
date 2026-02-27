@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004
+      author: Albert G.
+      changes:
+        - createTable:
+            tableName: commentaries
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: content
+                  type: varchar(255)
+              - column:
+                  name: date_of_publication
+                  type: timestamp
+              - column:
+                  name: publication_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_commentary_to_publication
+                    references: publications(id)
+                    deleteCascade: true
+                    nullable: false
+              - column:
+                  name: author_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_commentary_to_user
+                    references: users_table(id)
+                    nullable: false

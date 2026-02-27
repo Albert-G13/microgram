@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001
+      author: Albert G.
+      changes:
+        - createTable:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: role
+                  type: varchar(50)

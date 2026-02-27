@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003
+      author: Albert G.
+      changes:
+        - createTable:
+            tableName: publications
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: image
+                  type: varchar(255)
+              - column:
+                  name: description
+                  type: varchar(255)
+              - column:
+                  name: commentary_count
+                  type: bigint
+                  defaultValueNumeric: "0"
+              - column:
+                  name: likes_count
+                  type: bigint
+                  defaultValueNumeric: "0"
+              - column:
+                  name: date_of_publication
+                  type: timestamp
+              - column:
+                  name: author_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_publication_to_user
+                    references: users_table(id)
+                    nullable: false
