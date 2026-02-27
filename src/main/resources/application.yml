@@ -1,0 +1,42 @@
+server:
+  port: 3377
+spring:
+  application:
+    name: Microgram
+  datasource:
+    url: jdbc:h2:./db/microgram;AUTO_SERVER=TRUE
+    username: micro
+    password: gram
+    driver-class-name: org.h2.Driver
+  liquibase:
+    change-log: classpath:/db/changelog/master.yaml
+  mvc:
+    static-path-pattern: /static/**
+    log-request-details: true
+  freemarker:
+    expose-session-attributes: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+  servlet:
+    multipart:
+      max-file-size: 10MB
+logging:
+  level:
+    root: info
+    org:
+      springframework:
+        security: debug
+      hibernate:
+        stat: error
+        type: error
+    sql: error
+    web: error
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss} %logger{36} - %msg%n'
+  file:
+    path: logs
